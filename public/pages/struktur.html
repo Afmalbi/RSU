@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Struktur Organisasi RSU Pengayoman Cipinang</title>
+
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/struktur.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR LINK -->
+<div id="navbar-container"></div>
+<!-- FOOTER LINK -->
+<div id="hero-container"></div>
+
+    <!-- PAGE TITLE -->
+    <section class="container my-5">
+      <h1 class="page-title">Stuktur Organisasi RSU Pengayoman Cipinang</h1>
+      <p class="subtitle-text mb-4">
+        Struktur kepemimpinan dan manajemen rumah sakit yang berdedikasi
+        memberikan pelayanan terbaik bagi masyarakat.
+      </p>
+    </section>
+
+    <section class="container my-5 text-center">
+      <h1 class="page-title">Struktur Organisasi</h1>
+    
+      <div class="org-chart">
+    
+        <!-- KEPALA RS -->
+        <div class="org-item root">
+          <div class="org-box">
+            <img src="img/kepasrs.png" alt="Kepala RS">
+            <h6>Dr. Ummu Salamah</h6>
+            <span>Kepala RS</span>
+          </div>
+        </div>
+    
+        <!-- GARIS VERTIKAL KE BAWAH -->
+        <div class="line-vertical"></div>
+    </div>
+
+<!-- GARIS HORIZONTAL -->
+<div class="org-line"></div>
+
+    
+        <!-- LEVEL 1 -->
+        <div class="org-level">
+          <div class="org-item">
+            <div class="org-box">
+              <img src="img/profile.png" alt="">
+              <h6>Komite Medis</h6>
+            </div>
+          </div>
+    
+          <div class="org-item">
+            <div class="org-box">
+              <img src="img/profile.png" alt="">
+              <h6>SPI</h6>
+            </div>
+          </div>
+        </div>
+    
+        <div class="org-line"></div>
+    
+        <!-- LEVEL 2 -->
+        <div class="org-level">
+          <div class="org-item">
+            <div class="org-box">
+              <img src="img/profile.png" alt="">
+              <h6>Kassubag Keuangan & Perlengkapan</h6>
+            </div>
+          </div>
+    
+          <div class="org-item">
+            <div class="org-box">
+              <img src="img/profile.png" alt="">
+              <h6>Kassubag Umum, Kepegawaian & Humas</h6>
+            </div>
+          </div>
+        </div>
+    
+        <div class="org-line"></div>
+    
+        <!-- LEVEL 3 -->
+        <div class="org-level">
+          <div class="org-item">
+            <div class="org-box">
+              <img src="img/profile.png" alt="">
+              <h6>UPF</h6>
+            </div>
+          </div>
+    
+          <div class="org-item">
+            <div class="org-box">
+              <img src="img/profile.png" alt="">
+              <h6>Instalasi</h6>
+            </div>
+          </div>
+        </div>
+    
+        <div class="org-line"></div>
+    
+        <!-- LEVEL 4 -->
+        <div class="org-item">
+          <div class="org-box">
+            <img src="img/profile.png" alt="">
+            <h6>KJF</h6>
+          </div>
+        </div>
+    
+      </div>
+    </section>
+    
+
+</body>
+</html>
+
+<!-- MAPS LINK -->
+<div id="maps-container"></div>
+<!-- FOOTER LINK -->
+<div id="footer-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function slideLeft(id) {
+      document
+        .getElementById(id)
+        .scrollBy({ left: -300, behavior: "smooth" });
+    }
+
+    function slideRight(id) {
+      document.getElementById(id).scrollBy({ left: 300, behavior: "smooth" });
+    }
+
+    // Update tahun copyright
+    document.addEventListener("DOMContentLoaded", function () {
+      const currentYear = new Date().getFullYear();
+      document.querySelector(
+        "footer small"
+      ).textContent = `© ${currentYear} RSU Pengayoman Cipinang – Kementerian Hukum dan HAM RI. All rights reserved.`;
+    });
+  </script>
+  <!-- JS LINK NAVBAR, HERO, MAPS, DAN FOOTER -->
+  <script>
+        // Load navbar
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            });
+    </script>
+    <script>
+        // Load navbar
+        fetch('hero.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('hero-container').innerHTML = data;
+            });
+    </script>
+    <script>
+        // Load navbar
+        fetch('maps.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('maps-container').innerHTML = data;
+            });
+    </script>
+    <script>
+        // Load navbar
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            });
+    </script>
+</body>
+</html>

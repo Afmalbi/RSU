@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jadwal Dokter - RSU Pengayoman Cipinang</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/jadwal.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR LINK -->
+<div id="navbar-container"></div>
+<!-- HERO LINK -->
+<div id="hero-container"></div>
+
+<!-- JUDUL SETELAH HERO -->
+<section class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="display-5 mb-3" style="color: var(--blue-main);">Jadwal Dokter</h1>
+            <p class="lead mb-0" style="color: var(--text-dark);">Informasi jadwal praktik dokter spesialis dan umum</p>
+            <p class="text-muted mt-2">
+                <i class="fas fa-info-circle me-1"></i>
+                Klik tombol "Booking Jadwal" untuk membuat janji konsultasi
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- INFO BOX - Mengikuti style homepage -->
+<section class="container my-5">
+    <h2 class="page-title">Informasi Jadwal</h2>
+    
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="info-box h-100">
+                <div class="icon-circle">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h5 class="fw-bold mt-3">20+ Dokter Spesialis</h5>
+                <p class="text-muted mb-0">Berbagai spesialisasi tersedia untuk konsultasi</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="info-box h-100">
+                <div class="icon-circle">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h5 class="fw-bold mt-3">Jadwal Terupdate</h5>
+                <p class="text-muted mb-0">Jadwal diperbarui secara berkala setiap minggu</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="info-box h-100">
+                <div class="icon-circle">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h5 class="fw-bold mt-3">Booking Online</h5>
+                <p class="text-muted mb-0">Dapatkan jadwal konsultasi melalui pendaftaran online</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PENCARIAN DOKTER DENGAN FILTER POLI -->
+<section class="container my-5">
+    <h2 class="page-title">Cari Jadwal Dokter</h2>
+    
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="search-box">
+                <div class="row g-3">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent border-0">
+                                <i class="fas fa-search text-muted"></i>
+                            </span>
+                            <input type="text" class="form-control border-0" id="searchInput" placeholder="Ketik nama dokter atau spesialisasi..." onkeyup="filterDokter()">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent border-0">
+                                <i class="fas fa-clinic-medical text-muted"></i>
+                            </span>
+                            <select class="form-select border-0" id="filterPoli" onchange="filterDokter()">
+                                <option value="semua">Semua Poli</option>
+                                <option value="Poli Penyakit Dalam">Poli Penyakit Dalam</option>
+                                <option value="Poli Paru">Poli Paru</option>
+                                <option value="Poli Kulit & Kelamin">Poli Kulit & Kelamin</option>
+                                <option value="Poli Jiwa">Poli Jiwa</option>
+                                <option value="Poli Anak">Poli Anak</option>
+                                <option value="Poli Bedah">Poli Bedah</option>
+                                <option value="Poli Mata">Poli Mata</option>
+                                <option value="Poli Jantung">Poli Jantung</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <small class="text-muted">
+                        <i class="fas fa-info-circle me-1"></i>
+                        Gunakan filter poli untuk melihat jadwal dokter berdasarkan poliklinik tertentu
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DAFTAR DOKTER - SEMUA TAMPIL -->
+<section class="container my-5">
+    <h2 class="page-title">Daftar Dokter</h2>
+    <p class="text-muted mb-4">Berikut adalah jadwal praktik dokter di RSU Pengayoman</p>
+
+    <!-- GRID DOKTER - SEMUA TAMPIL -->
+    <div class="row g-4" id="daftarDokter">
+        <!-- Dr. Ummu Salamah -->
+        <div class="col-md-4 col-lg-3 dokter-card" data-poli="Poli Penyakit Dalam">
+            <div class="ui-card">
+                <div class="photo-wrap">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Ummu Salamah">
+                </div>
+                <div class="card-body">
+                    <h5 class="fw-bold">Dr. Ummu Salamah</h5>
+                    <span class="badge-soft">Penyakit Dalam</span>
+                    <span class="filter-badge">Poli Penyakit Dalam</span>
+                    <p class="text-muted small mt-2 mb-3">Spesialis Penyakit Dalam</p>
+                    
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Senin</span>
+                            <span class="jadwal-waktu">08:00 - 12:00</span>
+                        </div>
+                    </div>
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Kamis</span>
+                            <span class="jadwal-waktu">08:00 - 12:00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary w-100 mt-3" onclick="openBookingModal('Dr. Ummu Salamah', 'Poli Penyakit Dalam', 'Penyakit Dalam', ['Senin', 'Kamis'])">
+                        <i class="fas fa-calendar-check me-2"></i>Booking Jadwal
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dr. Ahmad Santoso -->
+        <div class="col-md-4 col-lg-3 dokter-card" data-poli="Poli Paru">
+            <div class="ui-card">
+                <div class="photo-wrap">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Ahmad Santoso">
+                </div>
+                <div class="card-body">
+                    <h5 class="fw-bold">Dr. Ahmad Santoso</h5>
+                    <span class="badge-soft">Paru</span>
+                    <span class="filter-badge">Poli Paru</span>
+                    <p class="text-muted small mt-2 mb-3">Spesialis Paru</p>
+                    
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Selasa</span>
+                            <span class="jadwal-waktu">09:00 - 14:00</span>
+                        </div>
+                    </div>
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Jumat</span>
+                            <span class="jadwal-waktu">09:00 - 14:00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary w-100 mt-3" onclick="openBookingModal('Dr. Ahmad Santoso', 'Poli Paru', 'Paru', ['Selasa', 'Jumat'])">
+                        <i class="fas fa-calendar-check me-2"></i>Booking Jadwal
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dr. Siti Fatimah -->
+        <div class="col-md-4 col-lg-3 dokter-card" data-poli="Poli Kulit & Kelamin">
+            <div class="ui-card">
+                <div class="photo-wrap">
+                    <img src="https://images.unsplash.com/photo-1594824434340-7e7dfc37cabb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Siti Fatimah">
+                </div>
+                <div class="card-body">
+                    <h5 class="fw-bold">Dr. Siti Fatimah</h5>
+                    <span class="badge-soft">Kulit & Kelamin</span>
+                    <span class="filter-badge">Poli Kulit & Kelamin</span>
+                    <p class="text-muted small mt-2 mb-3">Spesialis Kulit & Kelamin</p>
+                    
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Rabu</span>
+                            <span class="jadwal-waktu">10:00 - 15:00</span>
+                        </div>
+                    </div>
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Sabtu</span>
+                            <span class="jadwal-waktu">10:00 - 13:00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary w-100 mt-3" onclick="openBookingModal('Dr. Siti Fatimah', 'Poli Kulit & Kelamin', 'Kulit & Kelamin', ['Rabu', 'Sabtu'])">
+                        <i class="fas fa-calendar-check me-2"></i>Booking Jadwal
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dr. Bambang Wijaya -->
+        <div class="col-md-4 col-lg-3 dokter-card" data-poli="Poli Jiwa">
+            <div class="ui-card">
+                <div class="photo-wrap">
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Bambang Wijaya">
+                </div>
+                <div class="card-body">
+                    <h5 class="fw-bold">Dr. Bambang Wijaya</h5>
+                    <span class="badge-soft">Psikiatri</span>
+                    <span class="filter-badge">Poli Jiwa</span>
+                    <p class="text-muted small mt-2 mb-3">Spesialis Psikiatri</p>
+                    
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Senin</span>
+                            <span class="jadwal-waktu">13:00 - 17:00</span>
+                        </div>
+                    </div>
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Kamis</span>
+                            <span class="jadwal-waktu">13:00 - 17:00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary w-100 mt-3" onclick="openBookingModal('Dr. Bambang Wijaya', 'Poli Jiwa', 'Psikiatri', ['Senin', 'Kamis'])">
+                        <i class="fas fa-calendar-check me-2"></i>Booking Jadwal
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dr. Rina Wulandari -->
+        <div class="col-md-4 col-lg-3 dokter-card" data-poli="Poli Anak">
+            <div class="ui-card">
+                <div class="photo-wrap">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Rina Wulandari">
+                </div>
+                <div class="card-body">
+                    <h5 class="fw-bold">Dr. Rina Wulandari</h5>
+                    <span class="badge-soft">Anak</span>
+                    <span class="filter-badge">Poli Anak</span>
+                    <p class="text-muted small mt-2 mb-3">Spesialis Anak</p>
+                    
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Selasa</span>
+                            <span class="jadwal-waktu">08:00 - 12:00</span>
+                        </div>
+                    </div>
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Jumat</span>
+                            <span class="jadwal-waktu">08:00 - 12:00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary w-100 mt-3" onclick="openBookingModal('Dr. Rina Wulandari', 'Poli Anak', 'Anak', ['Selasa', 'Jumat'])">
+                        <i class="fas fa-calendar-check me-2"></i>Booking Jadwal
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dr. Agus Setiawan -->
+        <div class="col-md-4 col-lg-3 dokter-card" data-poli="Poli Bedah">
+            <div class="ui-card">
+                <div class="photo-wrap">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Agus Setiawan">
+                </div>
+                <div class="card-body">
+                    <h5 class="fw-bold">Dr. Agus Setiawan</h5>
+                    <span class="badge-soft">Bedah</span>
+                    <span class="filter-badge">Poli Bedah</span>
+                    <p class="text-muted small mt-2 mb-3">Spesialis Bedah</p>
+                    
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Rabu</span>
+                            <span class="jadwal-waktu">08:00 - 14:00</span>
+                        </div>
+                    </div>
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Sabtu</span>
+                            <span class="jadwal-waktu">08:00 - 12:00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary w-100 mt-3" onclick="openBookingModal('Dr. Agus Setiawan', 'Poli Bedah', 'Bedah', ['Rabu', 'Sabtu'])">
+                        <i class="fas fa-calendar-check me-2"></i>Booking Jadwal
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dr. Maya Indah -->
+        <div class="col-md-4 col-lg-3 dokter-card" data-poli="Poli Mata">
+            <div class="ui-card">
+                <div class="photo-wrap">
+                    <img src="https://images.unsplash.com/photo-1594824434340-7e7dfc37cabb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Maya Indah">
+                </div>
+                <div class="card-body">
+                    <h5 class="fw-bold">Dr. Maya Indah</h5>
+                    <span class="badge-soft">Mata</span>
+                    <span class="filter-badge">Poli Mata</span>
+                    <p class="text-muted small mt-2 mb-3">Spesialis Mata</p>
+                    
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Kamis</span>
+                            <span class="jadwal-waktu">09:00 - 15:00</span>
+                        </div>
+                    </div>
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Sabtu</span>
+                            <span class="jadwal-waktu">09:00 - 13:00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary w-100 mt-3" onclick="openBookingModal('Dr. Maya Indah', 'Poli Mata', 'Mata', ['Kamis', 'Sabtu'])">
+                        <i class="fas fa-calendar-check me-2"></i>Booking Jadwal
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dr. Joko Susanto -->
+        <div class="col-md-4 col-lg-3 dokter-card" data-poli="Poli Jantung">
+            <div class="ui-card">
+                <div class="photo-wrap">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. Joko Susanto">
+                </div>
+                <div class="card-body">
+                    <h5 class="fw-bold">Dr. Joko Susanto</h5>
+                    <span class="badge-soft">Jantung</span>
+                    <span class="filter-badge">Poli Jantung</span>
+                    <p class="text-muted small mt-2 mb-3">Spesialis Jantung</p>
+                    
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Senin</span>
+                            <span class="jadwal-waktu">10:00 - 16:00</span>
+                        </div>
+                    </div>
+                    <div class="jadwal-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="jadwal-hari">Rabu</span>
+                            <span class="jadwal-waktu">10:00 - 16:00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary w-100 mt-3" onclick="openBookingModal('Dr. Joko Susanto', 'Poli Jantung', 'Jantung', ['Senin', 'Rabu'])">
+                        <i class="fas fa-calendar-check me-2"></i>Booking Jadwal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Empty State (hidden by default) -->
+    <div id="emptyState" class="empty-state" style="display: none;">
+        <i class="fas fa-user-md"></i>
+        <h4>Tidak ada dokter ditemukan</h4>
+        <p>Coba gunakan kata kunci pencarian yang berbeda atau pilih poli lainnya</p>
+        <button class="btn btn-outline-primary mt-2" onclick="resetFilter()">
+            <i class="fas fa-redo me-1"></i>Tampilkan Semua Dokter
+        </button>
+    </div>
+</section>
+
+<!-- TABEL JADWAL LENGKAP -->
+<section class="container my-5">
+    <h2 class="page-title">Jadwal Lengkap</h2>
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-hover" style="border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                    <thead style="background: var(--blue-main); color: white;">
+                        <tr>
+                            <th>Nama Dokter</th>
+                            <th>Spesialisasi</th>
+                            <th>Hari</th>
+                            <th>Jam Praktik</th>
+                            <th>Poliklinik</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelJadwal">
+                        <tr>
+                            <td>Dr. Ummu Salamah</td>
+                            <td><span class="badge-soft">Penyakit Dalam</span></td>
+                            <td>Senin & Kamis</td>
+                            <td>08:00 - 12:00</td>
+                            <td>Poli Penyakit Dalam</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary" onclick="openBookingModal('Dr. Ummu Salamah', 'Poli Penyakit Dalam', 'Penyakit Dalam', ['Senin', 'Kamis'])">
+                                    <i class="fas fa-calendar-plus me-1"></i>Booking
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Dr. Ahmad Santoso</td>
+                            <td><span class="badge-soft">Paru</span></td>
+                            <td>Selasa & Jumat</td>
+                            <td>09:00 - 14:00</td>
+                            <td>Poli Paru</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary" onclick="openBookingModal('Dr. Ahmad Santoso', 'Poli Paru', 'Paru', ['Selasa', 'Jumat'])">
+                                    <i class="fas fa-calendar-plus me-1"></i>Booking
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Sisanya tetap sama dengan tombol booking -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INFORMASI PENTING -->
+<section class="container my-5">
+    <h2 class="page-title">Informasi Penting</h2>
+    
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="ui-card">
+                <div class="card-body">
+                    <h5 class="fw-bold"><i class="fas fa-exclamation-triangle me-2" style="color: #ffc107;"></i>Perhatian</h5>
+                    <ul class="text-muted mb-0">
+                        <li>Jadwal dapat berubah tanpa pemberitahuan</li>
+                        <li>Konfirmasi jadwal 1 hari sebelum berkunjung</li>
+                        <li>Datang 15 menit sebelum jadwal konsultasi</li>
+                        <li>Bawa dokumen pendukung yang diperlukan</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="ui-card">
+                <div class="card-body">
+                    <h5 class="fw-bold"><i class="fas fa-info-circle me-2" style="color: var(--blue-main);"></i>Prosedur Booking</h5>
+                    <ul class="text-muted mb-0">
+                        <li>Booking online melalui website atau aplikasi</li>
+                        <li>Konfirmasi booking via WhatsApp atau telepon</li>
+                        <li>Datang ke loket pendaftaran dengan kode booking</li>
+                        <li>Tunggu panggilan sesuai nomor antrian</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BOOKING MODAL -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-booking">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">Booking Jadwal Dokter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Step Indicator -->
+                <div class="step-indicator">
+                    <div class="step active" id="step1-indicator">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Pilih Jadwal</div>
+                    </div>
+                    <div class="step" id="step2-indicator">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Data Pasien</div>
+                    </div>
+                    <div class="step" id="step3-indicator">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Konfirmasi</div>
+                    </div>
+                </div>
+                
+                <!-- Step 1: Pilih Jadwal -->
+                <div class="booking-step active" id="step1">
+                    <div class="doctor-info mb-4 p-3 border rounded">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h6 id="doctor-name-modal"></h6>
+                                <p class="mb-1"><small>Spesialis: <span id="doctor-specialty-modal"></span></small></p>
+                                <p class="mb-0"><small>Poliklinik: <span id="doctor-poli-modal"></span></small></p>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <button class="btn btn-outline-primary btn-sm" onclick="changeDoctor()">
+                                    <i class="fas fa-exchange-alt me-1"></i>Ganti Dokter
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Pilih Tanggal <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="booking-date" min="">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Pilih Hari Praktik <span class="text-danger">*</span></label>
+                        <div id="available-days" class="d-flex flex-wrap gap-2">
+                            <!-- Hari akan diisi oleh JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Pilih Jam Konsultasi <span class="text-danger">*</span></label>
+                        <div id="time-slots" class="row">
+                            <!-- Time slots akan diisi oleh JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mt-4">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Selanjutnya <i class="fas fa-arrow-right ms-1"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Data Pasien -->
+                <div class="booking-step" id="step2">
+                    <h6 class="mb-3">Data Pasien</h6>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="patient-name" placeholder="Masukkan nama lengkap">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">No. Telepon <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control" id="patient-phone" placeholder="0812-3456-7890">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Tanggal Lahir <span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="patient-dob">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Jenis Kelamin <span class="text-danger">*</span></label>
+                            <select class="form-select" id="patient-gender">
+                                <option value="">Pilih</option>
+                                <option value="L">Laki-laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Alamat</label>
+                            <textarea class="form-control" id="patient-address" rows="2" placeholder="Masukkan alamat lengkap"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Keluhan/Riwayat Penyakit</label>
+                            <textarea class="form-control" id="patient-complaint" rows="3" placeholder="Jelaskan keluhan atau riwayat penyakit"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mt-4">
+                        <button type="button" class="btn btn-outline-secondary" onclick="prevStep()"><i class="fas fa-arrow-left me-1"></i> Sebelumnya</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Selanjutnya <i class="fas fa-arrow-right ms-1"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Konfirmasi -->
+                <div class="booking-step" id="step3">
+                    <div class="booking-success" id="success-message" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <h5>Booking Berhasil!</h5>
+                        <p id="booking-code"></p>
+                        <p class="text-muted">Kode booking telah dikirim ke nomor telepon Anda</p>
+                        <button type="button" class="btn btn-primary mt-3" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                    
+                    <div id="confirmation-content">
+                        <h6 class="mb-3">Konfirmasi Booking</h6>
+                        
+                        <div class="confirmation-details p-3 border rounded mb-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="mb-2"><strong>Dokter:</strong> <span id="confirm-doctor"></span></p>
+                                    <p class="mb-2"><strong>Tanggal:</strong> <span id="confirm-date"></span></p>
+                                    <p class="mb-2"><strong>Jam:</strong> <span id="confirm-time"></span></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mb-2"><strong>Poliklinik:</strong> <span id="confirm-poli"></span></p>
+                                    <p class="mb-2"><strong>Nama Pasien:</strong> <span id="confirm-patient"></span></p>
+                                    <p class="mb-2"><strong>No. Telepon:</strong> <span id="confirm-phone"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="confirm-terms">
+                            <label class="form-check-label" for="confirm-terms">
+                                Saya setuju dengan <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">syarat dan ketentuan</a> yang berlaku
+                            </label>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="button" class="btn btn-outline-secondary" onclick="prevStep()"><i class="fas fa-arrow-left me-1"></i> Sebelumnya</button>
+                            <button type="button" class="btn btn-success" id="submit-booking" onclick="submitBooking()">
+                                <span id="submit-text">Konfirmasi Booking</span>
+                                <span id="submit-loading" style="display: none;">
+                                    <span class="spinner-border spinner-border-sm booking-spinner" role="status" aria-hidden="true"></span>
+                                    Memproses...
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Terms Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="termsModalLabel">Syarat dan Ketentuan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ol>
+                    <li>Booking dapat dibatalkan maksimal 24 jam sebelum jadwal konsultasi</li>
+                    <li>Pasien diharapkan datang 15 menit sebelum jadwal konsultasi</li>
+                    <li>Booking yang tidak dikonfirmasi akan hangus setelah 1 jam</li>
+                    <li>Dokter berhak membatalkan jadwal dengan pemberitahuan sebelumnya</li>
+                    <li>Data pasien akan dijaga kerahasiaannya sesuai peraturan</li>
+                </ol>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Mengerti</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- LINK KE HALAMAN DAFTAR ONLINE (Alternatif) -->
+<div class="container my-5 text-center">
+    <div class="alert alert-info">
+        <h5 class="alert-heading">Ingin booking lebih lengkap?</h5>
+        <p>Anda juga dapat melakukan pendaftaran online melalui halaman khusus dengan form yang lebih lengkap.</p>
+        <a href="daftar-online.html" class="btn btn-outline-primary">
+            <i class="fas fa-external-link-alt me-2"></i>Ke Halaman Daftar Online
+        </a>
+    </div>
+</div>
+
+<!-- MAPS LINK -->
+<div id="maps-container"></div>
+<!-- FOOTER LINK -->
+<div id="footer-container"></div>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Variabel global untuk data booking
+    let bookingData = {
+        doctorName: '',
+        doctorPoli: '',
+        doctorSpecialty: '',
+        availableDays: [],
+        selectedDate: '',
+        selectedTime: '',
+        selectedDay: '',
+        patientData: {}
+    };
+    
+    let currentStep = 1;
+    
+    // Fungsi untuk filter dokter (sama seperti sebelumnya)
+    function filterDokter() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const selectedPoli = document.getElementById('filterPoli').value;
+        const cards = document.querySelectorAll('#daftarDokter .dokter-card');
+        const tabelRows = document.querySelectorAll('#tabelJadwal tr');
+        let visibleCount = 0;
+        
+        cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            const poli = card.getAttribute('data-poli');
+            
+            const matchesSearch = searchTerm === '' || text.includes(searchTerm);
+            const matchesPoli = selectedPoli === 'semua' || poli === selectedPoli;
+            
+            if (matchesSearch && matchesPoli) {
+                card.style.display = '';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        tabelRows.forEach(row => {
+            const rowText = row.textContent.toLowerCase();
+            const poliCell = row.cells[4] ? row.cells[4].textContent : '';
+            
+            const matchesSearch = searchTerm === '' || rowText.includes(searchTerm);
+            const matchesPoli = selectedPoli === 'semua' || poliCell === selectedPoli;
+            
+            if (matchesSearch && matchesPoli) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+        
+        const emptyState = document.getElementById('emptyState');
+        if (visibleCount === 0) {
+            emptyState.style.display = 'block';
+        } else {
+            emptyState.style.display = 'none';
+        }
+    }
+    
+    // Fungsi reset filter
+    function resetFilter() {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('filterPoli').value = 'semua';
+        filterDokter();
+    }
+    
+    // Fungsi untuk membuka modal booking
+    function openBookingModal(doctorName, poli, specialty, availableDays) {
+        // Reset data booking
+        bookingData = {
+            doctorName: doctorName,
+            doctorPoli: poli,
+            doctorSpecialty: specialty,
+            availableDays: availableDays,
+            selectedDate: '',
+            selectedTime: '',
+            selectedDay: '',
+            patientData: {}
+        };
+        
+        currentStep = 1;
+        
+        // Update modal content
+        document.getElementById('doctor-name-modal').textContent = doctorName;
+        document.getElementById('doctor-poli-modal').textContent = poli;
+        document.getElementById('doctor-specialty-modal').textContent = specialty;
+        
+        // Set min date (today)
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('booking-date').min = today;
+        
+        // Generate available days buttons
+        const daysContainer = document.getElementById('available-days');
+        daysContainer.innerHTML = '';
+        
+        const dayNames = {
+            'Senin': 'Monday',
+            'Selasa': 'Tuesday',
+            'Rabu': 'Wednesday',
+            'Kamis': 'Thursday',
+            'Jumat': 'Friday',
+            'Sabtu': 'Saturday',
+            'Minggu': 'Sunday'
+        };
+        
+        availableDays.forEach(day => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'btn btn-outline-primary btn-sm';
+            button.textContent = day;
+            button.onclick = function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('#available-days button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // Add active class to clicked button
+                this.classList.add('active');
+                bookingData.selectedDay = day;
+                generateTimeSlots(day);
+            };
+            daysContainer.appendChild(button);
+        });
+        
+        // Reset steps
+        resetSteps();
+        showStep(1);
+        
+        // Show modal
+        const modal = new bootstrap.Modal(document.getElementById('bookingModal'));
+        modal.show();
+    }
+    
+    // Fungsi untuk generate time slots
+    function generateTimeSlots(day) {
+        const timeSlotsContainer = document.getElementById('time-slots');
+        timeSlotsContainer.innerHTML = '';
+        
+        // Generate time slots based on day
+        let timeSlots = [];
+        
+        if (day === 'Senin' || day === 'Kamis') {
+            timeSlots = ['08:00', '09:00', '10:00', '11:00'];
+        } else if (day === 'Selasa' || day === 'Jumat') {
+            timeSlots = ['09:00', '10:00', '11:00', '13:00'];
+        } else if (day === 'Rabu') {
+            timeSlots = ['10:00', '11:00', '13:00', '14:00'];
+        } else if (day === 'Sabtu') {
+            timeSlots = ['09:00', '10:00', '11:00'];
+        }
+        
+        // Mark some slots as unavailable (simulasi)
+        const unavailableSlots = ['11:00', '13:00']; // Contoh jadwal yang sudah penuh
+        
+        timeSlots.forEach(slot => {
+            const col = document.createElement('div');
+            col.className = 'col-6 col-md-4';
+            
+            const timeSlot = document.createElement('div');
+            timeSlot.className = `time-slot ${unavailableSlots.includes(slot) ? 'unavailable' : ''}`;
+            timeSlot.textContent = slot;
+            
+            if (!unavailableSlots.includes(slot)) {
+                timeSlot.onclick = function() {
+                    // Remove selected class from all slots
+                    document.querySelectorAll('#time-slots .time-slot').forEach(s => {
+                        s.classList.remove('selected');
+                    });
+                    // Add selected class to clicked slot
+                    this.classList.add('selected');
+                    bookingData.selectedTime = slot;
+                };
+            }
+            
+            col.appendChild(timeSlot);
+            timeSlotsContainer.appendChild(col);
+        });
+    }
+    
+    // Fungsi untuk mengganti dokter
+    function changeDoctor() {
+        const modal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
+        modal.hide();
+        
+        // Scroll ke daftar dokter
+        document.getElementById('daftarDokter').scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Fungsi untuk navigasi step
+    function resetSteps() {
+        // Reset semua step indicator
+        for (let i = 1; i <= 3; i++) {
+            const stepIndicator = document.getElementById(`step${i}-indicator`);
+            stepIndicator.classList.remove('active', 'completed');
+            if (i === 1) stepIndicator.classList.add('active');
+        }
+    }
+    
+    function showStep(stepNumber) {
+        // Sembunyikan semua step
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById(`step${i}`).classList.remove('active');
+            const stepIndicator = document.getElementById(`step${i}-indicator`);
+            stepIndicator.classList.remove('active');
+            
+            if (i < stepNumber) {
+                stepIndicator.classList.add('completed');
+            }
+        }
+        
+        // Tampilkan step yang dipilih
+        document.getElementById(`step${stepNumber}`).classList.add('active');
+        document.getElementById(`step${stepNumber}-indicator`).classList.add('active');
+        
+        currentStep = stepNumber;
+    }
+    
+    function nextStep() {
+        // Validasi berdasarkan step
+        if (currentStep === 1) {
+            // Validasi step 1
+            const selectedDate = document.getElementById('booking-date').value;
+            const selectedDay = bookingData.selectedDay;
+            const selectedTime = bookingData.selectedTime;
+            
+            if (!selectedDate) {
+                alert('Harap pilih tanggal konsultasi');
+                return;
+            }
+            
+            if (!selectedDay) {
+                alert('Harap pilih hari praktik');
+                return;
+            }
+            
+            if (!selectedTime) {
+                alert('Harap pilih jam konsultasi');
+                return;
+            }
+            
+            bookingData.selectedDate = selectedDate;
+            
+        } else if (currentStep === 2) {
+            // Validasi step 2
+            const patientName = document.getElementById('patient-name').value;
+            const patientPhone = document.getElementById('patient-phone').value;
+            const patientDob = document.getElementById('patient-dob').value;
+            const patientGender = document.getElementById('patient-gender').value;
+            
+            if (!patientName || !patientPhone || !patientDob || !patientGender) {
+                alert('Harap lengkapi semua data yang wajib diisi');
+                return;
+            }
+            
+            // Simpan data pasien
+            bookingData.patientData = {
+                name: patientName,
+                phone: patientPhone,
+                dob: patientDob,
+                gender: patientGender,
+                address: document.getElementById('patient-address').value,
+                complaint: document.getElementById('patient-complaint').value
+            };
+            
+            // Update konfirmasi
+            document.getElementById('confirm-doctor').textContent = bookingData.doctorName;
+            document.getElementById('confirm-date').textContent = formatDate(bookingData.selectedDate);
+            document.getElementById('confirm-time').textContent = bookingData.selectedTime;
+            document.getElementById('confirm-poli').textContent = bookingData.doctorPoli;
+            document.getElementById('confirm-patient').textContent = bookingData.patientData.name;
+            document.getElementById('confirm-phone').textContent = bookingData.patientData.phone;
+        }
+        
+        // Lanjut ke step berikutnya
+        showStep(currentStep + 1);
+    }
+    
+    function prevStep() {
+        showStep(currentStep - 1);
+    }
+    
+    // Fungsi untuk submit booking
+    function submitBooking() {
+        const termsChecked = document.getElementById('confirm-terms').checked;
+        
+        if (!termsChecked) {
+            alert('Harap setujui syarat dan ketentuan terlebih dahulu');
+            return;
+        }
+        
+        // Tampilkan loading
+        document.getElementById('submit-text').style.display = 'none';
+        document.getElementById('submit-loading').style.display = 'inline';
+        document.getElementById('submit-booking').disabled = true;
+        
+        // Simulasi proses booking (ganti dengan AJAX ke server)
+        setTimeout(() => {
+            // Generate booking code
+            const bookingCode = 'BOOK-' + Math.random().toString(36).substr(2, 8).toUpperCase();
+            
+            // Tampilkan sukses message
+            document.getElementById('confirmation-content').style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+            document.getElementById('booking-code').innerHTML = `<strong>Kode Booking:</strong> <span class="text-primary">${bookingCode}</span>`;
+            
+            // Simpan ke localStorage (simulasi)
+            const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+            bookings.push({
+                code: bookingCode,
+                ...bookingData,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('bookings', JSON.stringify(bookings));
+            
+            // Reset form untuk booking berikutnya
+            setTimeout(() => {
+                const modal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
+                modal.hide();
+                
+                // Tampilkan notifikasi sukses
+                alert(`Booking berhasil!\nKode Booking: ${bookingCode}\nSilakan simpan kode ini untuk konfirmasi.`);
+            }, 3000);
+        }, 1500);
+    }
+    
+    // Helper functions
+    function formatDate(dateString) {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('id-ID', options);
+    }
+    
+    // Event listener untuk DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Update tahun copyright
+        const currentYear = new Date().getFullYear();
+        const copyrightElement = document.querySelector('footer small');
+        if (copyrightElement) {
+            copyrightElement.textContent = `© ${currentYear} RSU Pengayoman Cipinang – Kementerian Hukum dan HAM RI. All rights reserved.`;
+        }
+        
+        // Inisialisasi filter
+        filterDokter();
+        
+        // Prevent form submission
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+            });
+        });
+    });
+</script>
+
+<!-- JS LINK NAVBAR, HERO, MAPS, DAN FOOTER -->
+<script>
+    // Load navbar
+    fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-container').innerHTML = data;
+        });
+</script>
+<script>
+    // Load hero
+    fetch('hero.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('hero-container').innerHTML = data;
+        });
+</script>
+<script>
+    // Load maps
+    fetch('maps.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('maps-container').innerHTML = data;
+        });
+</script>
+<script>
+    // Load footer
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-container').innerHTML = data;
+        });
+</script>
+</body>
+</html>

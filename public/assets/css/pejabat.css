@@ -1,0 +1,122 @@
+.officer-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    margin-bottom: 30px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 4px solid var(--blue-main);
+}
+
+.officer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.15);
+}
+
+.officer-name {
+    color: var(--blue-main);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.officer-title {
+    color: var(--hospital-green);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.officer-rank {
+    background-color: var(--blue-soft);
+    color: var(--blue-main);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.contact-section {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    margin-top: 20px;
+    border-top: 4px solid var(--hospital-green);
+}
+
+.contact-title {
+    color: var(--blue-main);
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.hospital-name {
+    color: var(--hospital-green);
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.contact-info {
+    margin-bottom: 15px;
+}
+
+.contact-info i {
+    color: var(--blue-main);
+    width: 24px;
+    margin-right: 10px;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: var(--blue-main);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 10px;
+    transition: all 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: var(--hospital-green);
+    transform: translateY(-3px);
+}
+
+.nip-placeholder {
+    color: #888;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.officer-photo-placeholder {
+    width: 100px;
+    height: 120px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd;
+    margin-right: 20px;
+    float: left;
+}
+
+footer{background:#f5f7fa}
+
+@media (max-width: 768px) {
+    .officer-photo-placeholder {
+        float: none;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}

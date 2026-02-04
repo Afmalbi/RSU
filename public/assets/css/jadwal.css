@@ -1,0 +1,262 @@
+
+/* INFO BOX - Sama dengan homepage */
+.info-box {
+    background:#fff;
+    border-radius:15px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0, 0, 0, 0.08);
+    transition:.3s;
+    border-top: 4px solid var(--blue-main);
+}
+.info-box:hover{ 
+    transform:translateY(-6px); 
+    box-shadow:0 8px 20px rgba(13, 110, 253, 0.15);
+}
+
+.icon-circle{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:var(--blue-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto;
+    font-size:26px;
+    color:var(--blue-main);
+}
+
+/* UNIFIED CARD - Sama dengan homepage */
+.ui-card{
+    background:#fff;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow:hidden;
+    transition:.3s;
+    border-top: 4px solid var(--hospital-green);
+    height: 100%;
+}
+.ui-card:hover{ 
+    transform:translateY(-8px); 
+    box-shadow:0 8px 20px rgba(13, 110, 253, 0.15);
+}
+
+.ui-card .photo-wrap{
+    height:170px;
+    background:var(--blue-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow: hidden;
+}
+
+.ui-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.ui-card .card-body{
+    padding:20px;
+    text-align:center;
+}
+
+.badge-soft{
+    background:var(--blue-soft);
+    color:var(--blue-main);
+    border-radius:20px;
+    padding:6px 14px;
+    font-size:12px;
+    font-weight: 600;
+}
+
+/* PAGE TITLE - Sama dengan homepage */
+.page-title {
+    color: var(--blue-main);
+    border-left: 5px solid var(--hospital-green);
+    padding-left: 15px;
+    margin: 30px 0 15px 0;
+}
+
+/* FOOTER - Sama dengan homepage */
+footer{ 
+    background:#f5f7fa;
+}
+
+/* Styling khusus jadwal dokter */
+.doctor-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--blue-main);
+}
+
+.jadwal-item {
+    background: var(--blue-soft);
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--hospital-green);
+}
+
+.jadwal-hari {
+    font-weight: 600;
+    color: var(--blue-main);
+}
+
+.jadwal-waktu {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.search-box {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 2px solid var(--blue-soft);
+}
+
+.search-box:focus-within {
+    border-color: var(--blue-main);
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.15);
+}
+
+/* Filter Badge */
+.filter-badge {
+    background: var(--hospital-green);
+    color: white;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .search-box {
+        padding: 15px;
+    }
+    
+    .hero {
+        height: 40vh;
+    }
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #6c757d;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #dee2e6;
+}
+/* Modal Booking Custom Styles */
+.modal-booking {
+    max-width: 700px;
+}
+.booking-step {
+    display: none;
+}
+.booking-step.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+.step-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1rem;
+}
+.step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+.step.active .step-circle {
+    background-color: var(--blue-main);
+    color: white;
+}
+.step.completed .step-circle {
+    background-color: #28a745;
+    color: white;
+}
+.step-label {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+.step.active .step-label {
+    color: var(--blue-main);
+    font-weight: 600;
+}
+
+/* Time Slot Selection */
+.time-slot {
+    padding: 10px 15px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 10px;
+}
+.time-slot:hover {
+    border-color: var(--blue-light);
+    background-color: rgba(13, 110, 253, 0.05);
+}
+.time-slot.selected {
+    border-color: var(--blue-main);
+    background-color: rgba(13, 110, 253, 0.1);
+    font-weight: 600;
+}
+.time-slot.unavailable {
+    background-color: #f8f9fa;
+    color: #adb5bd;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Loading Spinner */
+.spinner-border.booking-spinner {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+/* Success Message */
+.booking-success {
+    text-align: center;
+    padding: 2rem;
+}
+.booking-success i {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 1rem;
+}
